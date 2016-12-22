@@ -15,7 +15,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" placeholder="webpack" onChange = {this.onChange.bind(this)} />
+        <input type="text" placeholder="and PostCSS" onChange = {this.onChange.bind(this)} />
         <p>{this.state.message}</p>
       </div>
     )

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --hot --inline",
     "release": "webpack --release",
-    "debug": "webpack --watch --progress"
+    "debug": "webpack --watch --progress",
+    "deploy": "npm run release && gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^2.24.1",
     "postcss-custom-properties": "^5.0.1",
     "postcss-loader": "^1.2.1",
