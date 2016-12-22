@@ -2,7 +2,7 @@ import React from "react";
 
 const ReactBabel = () => {
   return (
-    <h1>React, Babel</h1>
+    <h2>wei</h2>
   );
 }
 export default ReactBabel;

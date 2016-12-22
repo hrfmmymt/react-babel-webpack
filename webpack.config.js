@@ -11,6 +11,8 @@ const dist = path.resolve(__dirname, "dist");
 
 const DEBUG = !process.argv.includes("--release");
 
+const extractCSS = new ExtractTextPlugin("css/style.css");
+
 const plugins = [
   new HtmlWebpackPlugin({
     template: src + "/index.html",
@@ -18,18 +20,18 @@ const plugins = [
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production")
-    }
+    "process.env.NODE_ENV": "'" + (process.env.NODE_ENV || (DEBUG ? "development" : "production")) + "'"
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    minimize: true,
-    compress: {
-      warnings: false
-    }
-  }),
-  new webpack.optimize.AggressiveMergingPlugin()
+  extractCSS
 ];
+
+if(!DEBUG){
+  plugins.push(
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({ compress: { screw_ie8: true, warnings: false } }),
+    new webpack.optimize.AggressiveMergingPlugin()
+  );
+}
 
 module.exports = [
   {
@@ -56,39 +58,20 @@ module.exports = [
             "react-hot",
             "babel"
           ]
+        },
+        {
+          test: /\.css$/,
+          loader: extractCSS.extract("style", "css!postcss")
         }
       ]
     },
 
     resolve: {
-      extensions: ["", ".js"]
+      extensions: ["", ".js", ".css"]
     },
 
     plugins: plugins,
-  },
-  {
-    context: src + "/css",
-    entry: "./style.css",
-    output: {
-      path: dist + "/css",
-      filename: "[name].css"
-    },
-    devServer: {
-      contentBase: "dist"
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract(
-            "css?modules=true!postcss"
-          )
-        }
-      ]
-    },
-    plugins: [
-      new ExtractTextPlugin("[name].css")
-    ],
+
     postcss: [
       require("autoprefixer")(),
       require("postcss-custom-properties")(),
