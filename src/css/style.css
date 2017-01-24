@@ -1,24 +1,112 @@
+body,
+div,
+section,
+h1,
+h2,
+input,
+ul,
+li,
+a,
+p {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
-  --color: red;
-  --my-font: 10px "Helvetica", "Arial", sans-serif;
+  --theme-color: #3949ab;
+  --my-font: 10px Roboto, sans-serif;
+  --wrap-width: 70vw;
 }
 
 body {
-  background: #eee;
   font: var(--my-font);
+}
 
+.container {
   & div,
   & input {
     font-size: 1.6rem;
   }
 
-  & h1 {
-    font-size: 2.4rem;
-    animation: my-animation .2s linear;
+  & a {
+    color: var(--theme-color);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
-  & h2 {
-    font-size: 2rem;
-    color: var(--color);
+  & .wrapper {
+    width: var(--wrap-width);
+    margin: 0 auto;
+    & h2 {
+      font-size: 2rem;
+      color: var(--theme-color);
+      margin: 1rem 0 .5rem;
+    }
+  }
+
+  & header {
+    background-color: var(--theme-color);
+    margin-bottom: 10vh;
+    & .wrapper {
+      display: flex;
+      align-items: center;
+      & a {
+        color: #fff;
+      }
+      & h1 {
+        font-size: 2.4rem;
+        animation: my-animation .2s linear;
+        color: #fff;
+        font-weight: 400;
+        justify-content: flex-start;
+        & a {
+          text-decoration: none;
+        }
+      }
+      & nav {
+        margin-left: auto;
+        font-size: 1.4rem;
+        & ul {
+          display: flex;
+          list-style-type: none;
+          & li {
+            padding-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  & .area {
+    &__input {
+      & input[type="text"],
+      & p {
+        padding: .5rem 1rem;
+      }
+      & input[type="text"] {
+        border: none;
+        border-bottom: 1px solid #666;
+        border-radius: 2px;
+        width: 100%;
+        outline: none;
+        &:focus {
+          border-bottom: 2px solid var(--theme-color);
+        }
+      }
+    }
+
+    &__list {
+      & ul {
+        & li {
+          padding-left: 1rem;
+          list-style-position: inside;
+        }
+      }
+      & a {
+        margin-left: 1rem;
+      }
+    }
   }
 }
