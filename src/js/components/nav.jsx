@@ -9,5 +9,6 @@ const Nav = () => {
       </ul>
     </nav>
   );
-}
+};
+
 export default Nav;

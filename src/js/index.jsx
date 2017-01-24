@@ -3,7 +3,7 @@ import {render} from "react-dom";
 
 import Header from "./components/header.jsx";
 import Input from "./components/input.jsx";
-import ListSection from "./components/list_section.jsx";
+import ListSection from "./components/list-section.jsx";
 
 import Style from "../css/style.css";
 

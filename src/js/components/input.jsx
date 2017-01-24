@@ -1,12 +1,13 @@
 import React from "react";
 
 export default class Input extends React.Component {
-  constructor(props) { 
+  constructor(props) {
     super(props);
     this.state = {message: ""};
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  onChange(e) {
+  handleChange(e) {
     this.setState({
       message: e.target.value
     });
@@ -16,10 +17,14 @@ export default class Input extends React.Component {
     return (
       <div className="wrapper area__input">
         <h2>Input</h2>
-        <input type="text" placeholder="input here" onChange = {this.onChange.bind(this)} />
+        <input
+          type="text"
+          placeholder="input here"
+          onChange={this.handleChange}
+          />
         <h2>Output</h2>
         <p>{this.state.message}</p>
       </div>
-    )
+    );
   }
 }

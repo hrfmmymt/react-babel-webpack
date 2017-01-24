@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "xo",
     "start": "webpack-dev-server --hot --inline",
     "release": "webpack --release",
     "debug": "webpack --watch --progress",
@@ -21,6 +21,8 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
+    "eslint-config-xo-react": "^0.10.0",
+    "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^2.24.1",
@@ -35,6 +37,26 @@
   "dependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "superagent": "^3.3.2"
+    "superagent": "^3.3.2",
+    "xo": "^0.17.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "xo-react"
+    ]
+  },
+  "xo": {
+    "extends": "xo-react",
+    "envs": ["browser"],
+    "space": 2,
+    "rules": {
+      "quotes": [2, "double"],
+      "react/jsx-space-before-closing": [2, "always"],
+      "react/jsx-equals-spacing": [2, "never"],
+      "no-unused-vars": 1,
+      "import/order": 1,
+      "import/no-unassigned-import": 1
+    }
   }
 }

@@ -1,12 +1,12 @@
-require("babel-core/register");
+// require("babel-core/register");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-require("babel-polyfill");
+// require("babel-polyfill");
 
 const webpack = require("webpack");
 
-const src  = path.resolve(__dirname, "src");
+const src = path.resolve(__dirname, "src");
 const dist = path.resolve(__dirname, "dist");
 
 const DEBUG = !process.argv.includes("--release");
@@ -25,10 +25,14 @@ const plugins = [
   extractCSS
 ];
 
-if(!DEBUG){
+if (!DEBUG) {
   plugins.push(
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({ compress: { screw_ie8: true, warnings: false } }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     new webpack.optimize.AggressiveMergingPlugin()
   );
 }
