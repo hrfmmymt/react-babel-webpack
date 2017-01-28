@@ -1,1 +1,112 @@
-a,body,div,h1,h2,input,li,p,section,ul{margin:0;padding:0}body{font:10px Roboto,sans-serif}.container div,.container input{font-size:1.6rem}.container a{color:#3949ab;text-decoration:none}.container a:hover{text-decoration:underline}.container .wrapper{width:70vw;margin:0 auto}.container .wrapper h2{font-size:2rem;color:#3949ab;margin:1rem 0 .5rem}.container header{background-color:#3949ab;margin-bottom:10vh}.container header .wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.container header .wrapper a{color:#fff}.container header .wrapper h1{font-size:2.4rem;-webkit-animation:my-animation .2s linear;animation:my-animation .2s linear;color:#fff;font-weight:400;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}.container header .wrapper h1 a{text-decoration:none}.container header .wrapper nav{margin-left:auto;font-size:1.4rem}.container header .wrapper nav ul{display:-webkit-box;display:-ms-flexbox;display:flex;list-style-type:none}.container header .wrapper nav ul li{padding-left:1rem}.container .area__input input[type=text],.container .area__input p{padding:.5rem 1rem}.container .area__input input[type=text]{border:none;border-bottom:1px solid #666;border-radius:2px;width:100%;outline:none}.container .area__input input[type=text]:focus{border-bottom:2px solid #3949ab}.container .area__list ul li{padding-left:1rem;list-style-position:inside}.container .area__list a{margin-left:1rem}
+body,
+div,
+section,
+h1,
+h2,
+input,
+ul,
+li,
+a,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 10px Roboto, sans-serif;
+}
+
+.container div,
+  .container input {
+  font-size: 1.6rem;
+}
+
+.container a {
+  color: #3949ab;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+.container .wrapper {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.container .wrapper h2 {
+  font-size: 2rem;
+  color: #3949ab;
+  margin: 1rem 0 .5rem;
+}
+
+.container header {
+  background-color: #3949ab;
+  margin-bottom: 10vh;
+}
+
+.container header .wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.container header .wrapper a {
+  color: #fff;
+}
+
+.container header .wrapper h1 {
+  font-size: 2.4rem;
+  animation: my-animation .2s linear;
+  color: #fff;
+  font-weight: 400;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.container header .wrapper h1 a {
+  text-decoration: none;
+}
+
+.container header .wrapper nav {
+  margin-left: auto;
+  font-size: 1.4rem;
+}
+
+.container header .wrapper nav ul {
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+}
+
+.container header .wrapper nav ul li {
+  padding-left: 1rem;
+}
+
+.container .area__input input[type="text"],
+      .container .area__input p {
+  padding: .5rem 1rem;
+}
+
+.container .area__input input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #666;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+}
+
+.container .area__input input[type="text"]:focus {
+  border-bottom: 2px solid #3949ab;
+}
+
+.container .area__list ul li {
+  padding-left: 1rem;
+  list-style-position: inside;
+}
+
+.container .area__list a {
+  margin-left: 1rem;
+}
