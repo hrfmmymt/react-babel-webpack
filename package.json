@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test NODE_PATH=src ava --verbose",
     "start": "webpack-dev-server --hot --inline",
     "lint": "xo",
     "build": "webpack",
     "debug": "webpack --watch --progress",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "test": "NODE_ENV=test NODE_PATH=src ava --verbose",
+    "cover": "nyc --reporter=lcov --reporter=text yarn test"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +23,6 @@
     "babel-polyfill": "^6.20.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
-    "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "eslint-config-xo-react": "^0.10.0",
@@ -31,6 +31,7 @@
     "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^2.24.1",
     "jsdom": "^9.9.1",
+    "nyc": "^10.1.2",
     "postcss-custom-properties": "^5.0.1",
     "postcss-loader": "^1.2.2",
     "postcss-nested": "^1.0.0",
@@ -59,6 +60,11 @@
     "require": [
       "babel-register",
       "./test/global.setup.js"
+    ]
+  },
+  "nyc": {
+    "extension": [
+      ".jsx"
     ]
   },
   "xo": {
