@@ -11,18 +11,30 @@ const dist = path.resolve(__dirname, "dist");
 
 const DEBUG = !process.argv.includes("--release");
 
-const extractCSS = new ExtractTextPlugin("css/style.css");
-
 const plugins = [
   new HtmlWebpackPlugin({
     template: src + "/index.html",
     filename: "index.html"
   }),
-  new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.DefinePlugin({
     "process.env.NODE_ENV": "'" + (process.env.NODE_ENV || (DEBUG ? "development" : "production")) + "'"
   }),
-  extractCSS
+  new ExtractTextPlugin({
+    filename: "css/style.css",
+    disable: false,
+    allChunks: true
+  }),
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      postcss: [
+        require("autoprefixer")({
+          browsers: ["last 2 versions"]
+        }),
+        require("postcss-custom-properties")(),
+        require("postcss-nested")()
+      ]
+    }
+  })
 ];
 
 if (!DEBUG) {
@@ -54,32 +66,33 @@ module.exports = [
     devtool: DEBUG ? "cheap-module-eval-source-map" : false,
 
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.jsx$/,
           exclude: /node_modules/,
           loaders: [
-            "react-hot",
-            "babel"
+            "react-hot-loader",
+            "babel-loader"
           ]
         },
         {
           test: /\.css$/,
-          loader: extractCSS.extract("style", "css!postcss")
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: "style-loader",
+            loader: [
+              "css-loader",
+              "postcss-loader"
+            ],
+            publicPath: "/css"
+          })
         }
       ]
     },
 
     resolve: {
-      extensions: ["", ".js", ".css"]
+      extensions: ["*", ".js", ".css"]
     },
 
-    plugins: plugins,
-
-    postcss: [
-      require("autoprefixer")(),
-      require("postcss-custom-properties")(),
-      require("postcss-nested")()
-    ]
+    plugins: plugins
   }
 ];
