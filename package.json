@@ -6,9 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "lint": "xo",
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "debug": "webpack --watch --progress",
-    "deploy": "npm run build && gh-pages -d dist",
+    "deploy": "yarn build && gh-pages -d dist",
     "test": "NODE_ENV=test NODE_PATH=src ava --verbose",
     "cover": "nyc --reporter=lcov --reporter=text yarn test"
   },

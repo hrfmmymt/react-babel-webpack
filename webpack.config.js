@@ -9,7 +9,7 @@ const webpack = require("webpack");
 const src = path.resolve(__dirname, "src");
 const dist = path.resolve(__dirname, "dist");
 
-const DEBUG = !process.argv.includes("--release");
+const PROD = !process.argv.includes("--hot");
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -17,7 +17,7 @@ const plugins = [
     filename: "index.html"
   }),
   new webpack.DefinePlugin({
-    "process.env.NODE_ENV": "'" + (process.env.NODE_ENV || (DEBUG ? "development" : "production")) + "'"
+    "process.env.NODE_ENV": "'" + (process.env.NODE_ENV || (PROD ? "production" : "development")) + "'"
   }),
   new ExtractTextPlugin({
     filename: "css/style.css",
@@ -37,9 +37,8 @@ const plugins = [
   })
 ];
 
-if (!DEBUG) {
+if (PROD) {
   plugins.push(
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
@@ -63,7 +62,7 @@ module.exports = [
       contentBase: "dist"
     },
 
-    devtool: DEBUG ? "cheap-module-eval-source-map" : false,
+    devtool: PROD ? false : "cheap-module-eval-source-map",
 
     module: {
       rules: [
