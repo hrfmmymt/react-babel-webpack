@@ -1,14 +1,15 @@
 import React from "react";
+import {Link} from "react-router";
 
-const Nav = () => {
-  return (
-    <nav>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  );
-};
-
-export default Nav;
+export default React.createClass({
+  render() {
+    return (
+      <nav>
+        <ul>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </nav>
+    );
+  }
+});

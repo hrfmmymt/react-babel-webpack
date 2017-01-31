@@ -1,15 +1,16 @@
-import React, {Component} from "react";
+import React from "react";
+import {Link} from "react-router";
 import Nav from "../components/nav.jsx";
 
-export default class Header extends Component {
+export default React.createClass({
   render() {
     return (
       <header>
         <div className="wrapper">
-          <h1><a href="/">Header</a></h1>
+          <h1><Link to="/">Header</Link></h1>
           <Nav />
         </div>
       </header>
     );
   }
-}
+});

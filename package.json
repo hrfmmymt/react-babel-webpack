@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --hot --inline --history-api-fallback",
     "lint": "xo",
     "build": "NODE_ENV=production webpack",
     "debug": "webpack --watch --progress",
@@ -44,6 +44,7 @@
   "dependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-router": "^3.0.2",
     "superagent": "^3.3.2",
     "xo": "^0.17.1"
   },

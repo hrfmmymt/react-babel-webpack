@@ -51,7 +51,7 @@ if (PROD) {
 module.exports = [
   {
     context: src + "/js",
-    entry: "./index.jsx",
+    entry: "./app.jsx",
 
     output: {
       path: dist,

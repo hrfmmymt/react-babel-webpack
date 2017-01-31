@@ -1,12 +1,13 @@
 import test from "ava";
 import React from "react";
+import {Link} from "react-router";
 import {shallow, mount} from "enzyme";
 
 import Header from "js/components/header";
 
 test("shallow", t => {
   const wrapper = shallow(<Header />);
-  t.is(wrapper.contains(<a href="/">Header</a>), true);
+  t.is(wrapper.contains(<Link to="/">Header</Link>), true);
 });
 
 test("mount", t => {

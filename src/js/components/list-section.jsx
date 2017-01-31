@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import List from "../components/list.jsx";
 
-export default class ListSection extends Component {
+export default React.createClass({
   render() {
     return (
       <section className="wrapper area__list">
@@ -10,4 +10,4 @@ export default class ListSection extends Component {
       </section>
     );
   }
-}
+});
