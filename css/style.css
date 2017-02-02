@@ -103,10 +103,20 @@ body {
 }
 
 .container .area__list ul li {
+  margin-bottom: 1rem;
   padding-left: 1rem;
   list-style-position: inside;
 }
 
+.container .area__list ul li:after {
+  content: "tags: "attr(data-tags);
+  font-size: .6em;
+  vertical-align: middle;
+  color: #a0a0a0;
+  display: block;
+  text-indent: 2rem;
+}
+
 .container .area__list a {
-  margin-left: 1rem;
+  margin-left: -1rem;
 }
