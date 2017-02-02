@@ -100,12 +100,21 @@ body {
     &__list {
       & ul {
         & li {
+          margin-bottom: 1rem;
           padding-left: 1rem;
           list-style-position: inside;
+          &:after {
+            content: "tags: "attr(data-tags);
+            font-size: .6em;
+            vertical-align: middle;
+            color: #a0a0a0;
+            display: block;
+            text-indent: 2rem;
+          }
         }
       }
       & a {
-        margin-left: 1rem;
+        margin-left: -1rem;
       }
     }
   }

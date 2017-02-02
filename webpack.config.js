@@ -1,8 +1,6 @@
-// require("babel-core/register");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-// require("babel-polyfill");
 
 const webpack = require("webpack");
 

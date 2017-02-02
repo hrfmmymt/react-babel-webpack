@@ -5717,7 +5717,13 @@ style-loader@^0.13.1:
   dependencies:
     loader-utils "^0.2.7"
 
-superagent@^3.3.2:
+superagent-jsonp@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/superagent-jsonp/-/superagent-jsonp-0.1.1.tgz#c6fad7a7366903dbefe869f0e2e30756e20b28ed"
+  dependencies:
+    superagent ">=1.4"
+
+superagent@>=1.4, superagent@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.3.2.tgz#23b4ed895911215a1f90b44d16638b6492f9c114"
   dependencies:

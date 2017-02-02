@@ -1,5 +1,6 @@
 import React from "react";
 import request from "superagent";
+import jsonp from "superagent-jsonp";
 
 export default class List extends React.Component {
   constructor() {
@@ -11,12 +12,16 @@ export default class List extends React.Component {
 
   componentDidMount() {
     this.serverRequest =
-      request.get("//codepen.io/jobs.json")
+      request.get("http://api.tumblr.com/v2/blog/hrfmmymt/posts?api_key=UzvNmLeVFBpiFMakyac4wPlteUevfkSnQijUz4V8Kcuisvmip7&type=text")
+      .use(jsonp)
       .end((err, res) => {
-        const json = JSON.parse(res.text);
-        this.setState({
-          lists: json.jobs
-        });
+        if(err) {
+        } else {
+          const data = res.body.response.posts;
+          this.setState({
+            lists: data
+          });
+        }
       });
   }
 
@@ -25,16 +30,15 @@ export default class List extends React.Component {
   }
 
   render() {
-    return (
+    const posts = this.state.lists.map(list => {
+      return(
+        <li key={list.post_url} data-tags={list.tags} className="list"><a href={list.post_url}>{list.title}</a></li>
+      );
+    });
+
+    return(
       <ul>
-        {this.state.lists.map(list => {
-          return (
-            <li key={list.url} className="list">
-              {list.company_name} - {list.term} -
-              <a href={list.url}>{list.title}</a>
-            </li>
-          );
-        })}
+        {posts}
       </ul>
     );
   }

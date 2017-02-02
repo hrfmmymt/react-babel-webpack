@@ -5,7 +5,7 @@ export default React.createClass({
   render() {
     return (
       <section className="wrapper area__list">
-        <h2>Lists from server (by superagent)</h2>
+        <h2>Tumblr Posts</h2>
         <List />
       </section>
     );
