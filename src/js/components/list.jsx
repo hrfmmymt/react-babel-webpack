@@ -12,7 +12,7 @@ export default class List extends React.Component {
 
   componentDidMount() {
     this.serverRequest =
-      request.get("http://api.tumblr.com/v2/blog/hrfmmymt/posts?api_key=UzvNmLeVFBpiFMakyac4wPlteUevfkSnQijUz4V8Kcuisvmip7&type=text")
+      request.get("//api.tumblr.com/v2/blog/hrfmmymt/posts?api_key=UzvNmLeVFBpiFMakyac4wPlteUevfkSnQijUz4V8Kcuisvmip7&type=text")
       .use(jsonp)
       .end((err, res) => {
         if(err) {
