@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body,
 div,
 section,
@@ -7,13 +9,24 @@ input,
 ul,
 li,
 a,
-p {
+p,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
   margin: 0;
   padding: 0;
 }
 
 body {
   font: 10px Roboto, sans-serif;
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 .container div,
@@ -85,12 +98,12 @@ body {
   padding-left: 1rem;
 }
 
-.container .area__input input[type="text"],
-      .container .area__input p {
+.home__input input[type="text"],
+    .home__input p {
   padding: .5rem 1rem;
 }
 
-.container .area__input input[type="text"] {
+.home__input input[type="text"] {
   border: none;
   border-bottom: 1px solid #666;
   border-radius: 2px;
@@ -98,17 +111,17 @@ body {
   outline: none;
 }
 
-.container .area__input input[type="text"]:focus {
+.home__input input[type="text"]:focus {
   border-bottom: 2px solid #3949ab;
 }
 
-.container .area__list ul li {
+.home__list ul li {
   margin-bottom: 1rem;
   padding-left: 1rem;
   list-style-position: inside;
 }
 
-.container .area__list ul li:after {
+.home__list ul li:after {
   content: "tags: "attr(data-tags);
   font-size: .6em;
   vertical-align: middle;
@@ -117,6 +130,37 @@ body {
   text-indent: 2rem;
 }
 
-.container .area__list a {
+.home__list a {
   margin-left: -1rem;
 }
+
+.about table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.about table > thead > tr > th,
+        .about table > thead > tr > td,
+        .about table > tbody > tr > th,
+        .about table > tbody > tr > td {
+  text-align: left;
+  padding: 1rem;
+  vertical-align: top;
+  border-top: 0;
+}
+
+.about table > thead > tr > th {
+  font-weight: 400;
+  color: #757575;
+  vertical-align: bottom;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+.about table > tbody > tr:hover {
+  background-color: rgba(0, 0, 0, .12);
+}
+
+.contact {}
