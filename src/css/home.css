@@ -1,0 +1,39 @@
+.home {
+  &__input {
+    & input[type="text"],
+    & p {
+      padding: .5rem 1rem;
+    }
+    & input[type="text"] {
+      border: none;
+      border-bottom: 1px solid #666;
+      border-radius: 2px;
+      width: 100%;
+      outline: none;
+      &:focus {
+        border-bottom: 2px solid var(--theme-color);
+      }
+    }
+  }
+
+  &__list {
+    & ul {
+      & li {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        list-style-position: inside;
+        &:after {
+          content: "tags: "attr(data-tags);
+          font-size: .6em;
+          vertical-align: middle;
+          color: #a0a0a0;
+          display: block;
+          text-indent: 2rem;
+        }
+      }
+    }
+    & a {
+      margin-left: -1rem;
+    }
+  }
+}

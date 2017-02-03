@@ -15,7 +15,7 @@ export default class Input extends React.Component {
 
   render() {
     return (
-      <div className="wrapper area__input">
+      <div className="wrapper home__input">
         <h2>Input</h2>
         <input
           type="text"

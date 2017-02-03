@@ -6,7 +6,7 @@ import ListSection from "./components/list-section.jsx";
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className="wrapper home">
         <Input />
         <ListSection />
       </div>

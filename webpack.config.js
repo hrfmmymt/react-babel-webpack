@@ -25,6 +25,7 @@ const plugins = [
   new webpack.LoaderOptionsPlugin({
     options: {
       postcss: [
+        require("postcss-import")(),
         require("autoprefixer")({
           browsers: ["last 2 versions"]
         }),

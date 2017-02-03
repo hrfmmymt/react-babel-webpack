@@ -33,15 +33,40 @@ export default class List extends React.Component {
 
   render() {
     const posts = this.state.lists.map(list => {
+      const t = new Date(list.timestamp * 1000);
+      const y = t.getFullYear();
+      let m = t.getMonth() + 1;
+      m = (m < 10) ? "0" + m : m;
+      let d = t.getDate();
+      d = (d < 10) ? "0" + d : d;
+      const timestamp = d + "/" + m + "/" + y;
+
       return(
-        <li key={list.post_url} data-tags={list.tags}><a href={list.post_url}>{list.title}</a></li>
+        <tr key={list.post_url} data-tags={list.tags} className="row">
+          <td>{list.title}</td>
+          <td><a href={list.short_url}>{list.short_url}</a></td>
+          <td>{timestamp}</td>
+          <td>{list.format}</td>
+          <td>{list.tags}</td>
+        </tr>
       );
     });
 
     return(
-      <ul>
-        {posts}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>title</th>
+            <th>url</th>
+            <th>posted date</th>
+            <th>format</th>
+            <th>tags</th>
+          </tr>
+        </thead>
+        <tbody>
+          {posts}
+        </tbody>
+      </table>
     );
   }
 }
