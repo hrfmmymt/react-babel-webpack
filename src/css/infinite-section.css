@@ -1,0 +1,23 @@
+.infSection {
+  & .tracks {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 4rem;
+    &__item {
+      width: 18%;
+      margin-bottom: 4rem;
+      & a {
+        display: block;
+        & img {
+          width: 100%;
+        }
+        & p {
+          font-size: .6em;
+          color: #666;
+        }
+      }
+    }
+  }
+}

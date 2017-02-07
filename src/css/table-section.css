@@ -2,12 +2,11 @@
   --table-header-font-weight: 400;
   --table-header-font-color: #757575;
   --table-cell-padding: 1rem;
-
   --table-bg: #fff;
   --table-bg-hover: rgba(0, 0, 0, .12);
 }
 
-.about {
+.table {
   & table {
     border-collapse: collapse;
     width: 100%;

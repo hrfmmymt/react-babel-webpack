@@ -1,12 +1,24 @@
+/*-------------------------------
+  ┌ reset
+  ├ def variables
+  └ body, container
+     ├ common elm | classes
+     └ header
+-------------------------------*/
+
+/*---------- reset ----------*/
+
 body,
 div,
 section,
 h1,
 h2,
+h3,
 input,
 ul,
 li,
 a,
+button,
 p,
 table,
 thead,
@@ -19,11 +31,17 @@ td {
   padding: 0;
 }
 
+
+/*---------- def variables ----------*/
+
 :root {
   --theme-color: #3949ab;
   --my-font: 10px Roboto, sans-serif;
   --wrap-width: 70vw;
 }
+
+
+/*---------- body, container ----------*/
 
 body {
   font: var(--my-font);
@@ -56,6 +74,7 @@ body {
     }
   }
 
+  /*---------- header ----------*/
   & header {
     background-color: var(--theme-color);
     margin-bottom: 10vh;
@@ -83,6 +102,14 @@ body {
           list-style-type: none;
           & li {
             padding-left: 1rem;
+          }
+        }
+        & a {
+          &.active {
+            text-decoration: underline;
+            &:hover {
+              cursor: text;
+            }
           }
         }
       }

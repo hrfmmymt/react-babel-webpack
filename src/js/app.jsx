@@ -4,8 +4,9 @@ import {IndexRoute, Link, Router, Route, browserHistory} from "react-router";
 
 import Index from "./index.jsx";
 import Home from './home.jsx';
-import About from "./components/about.jsx";
-import Contact from "./components/contact.jsx";
+import TableSection from "./components/table-section.jsx";
+import InfiniteSection from "./components/infinite-section.jsx";
+import ModalSection from "./components/modal-section.jsx";
 
 import Style from "../css/style.css";
 
@@ -13,8 +14,9 @@ render(
   <Router history={browserHistory}>
     <Route path="/" component={Index}>
       <IndexRoute component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+      <Route path="/table-section" component={TableSection} />
+      <Route path="/infinite-section" component={InfiniteSection} />
+      <Route path="/modal-section" component={ModalSection} />
     </Route>
   </Router>,
   document.getElementById("app")

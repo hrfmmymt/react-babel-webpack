@@ -1,0 +1,58 @@
+.modal {
+  & button {
+    cursor: pointer;
+    border: none;
+    min-width: 10%;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 2%;
+    background-color: #f2594b;
+    color: #fff;
+    border-radius: 3px;
+    &:hover {
+      opacity: .8;
+    }
+  }
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__window {
+    position: relative;
+    z-index: 1000;
+    text-align: center;
+    background: #fff;
+    width: 50vw;
+    height: 50vh;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 2%;
+    line-height: 1.6;
+    & h3 {
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
+    & p {
+      font-size: .8em;
+    }
+    & span {
+      font-size: .6em;
+      color: gray;
+    }
+    & button {
+      display: block;
+      margin: 4% auto 0;
+    }
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, .6);
+    cursor: pointer;
+  }
+}

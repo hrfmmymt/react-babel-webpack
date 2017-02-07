@@ -2,5 +2,6 @@
 
 @import "base.css";
 @import "home.css";
-@import "about.css";
-@import "contact.css";
+@import "table-section.css";
+@import "infinite-section.css";
+@import "modal-section.css";

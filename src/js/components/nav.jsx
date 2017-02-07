@@ -6,8 +6,9 @@ export default React.createClass({
     return (
       <nav>
         <ul>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/table-section" activeClassName="active">Table</Link></li>
+          <li><Link to="/infinite-section" activeClassName="active">Infinite</Link></li>
+          <li><Link to="/modal-section" activeClassName="active">Modal</Link></li>
         </ul>
       </nav>
     );
