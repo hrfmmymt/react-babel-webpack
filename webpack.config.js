@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 const webpack = require("webpack");
 
@@ -33,6 +34,13 @@ const plugins = [
         require("postcss-nested")()
       ]
     }
+  }),
+  new StyleLintPlugin({
+    configFile: ".stylelintrc",
+    context: "src/css",
+    files: "*.css",
+    failOnError: false,
+    quiet: false
   })
 ];
 
