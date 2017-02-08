@@ -1,9 +1,11 @@
 import React from "react";
 
 export default class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {message: ""};
+  constructor() {
+    super();
+    this.state = {
+      message: ""
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 

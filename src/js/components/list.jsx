@@ -2,12 +2,33 @@ import React from "react";
 import request from "superagent";
 import jsonp from "superagent-jsonp";
 
+class FilterPosts extends React.Component {
+  filterVal() {
+    const val = this.refs.myinput.value;
+    console.log(val);
+    this.props.onFilterVal(val);
+  }
+
+  render() {
+    return (
+      <div>
+        <input
+          type="text"
+          ref="myinput"
+          onChange={this.filterVal.bind(this)}
+          placeholder="sort"
+        />
+      </div>
+    );
+  }
+}
+
 export default class List extends React.Component {
-  constructor() {
-    super();
-    this.state = ({
+  constructor(props) {
+    super(props);
+    this.state = {
       lists: []
-    });
+    };
   }
 
   componentDidMount() {
@@ -18,6 +39,7 @@ export default class List extends React.Component {
       }))
       .end((err, res) => {
         if(err) {
+          console.log("err");
         } else {
           const data = res.body.response.posts;
           this.setState({
@@ -31,6 +53,17 @@ export default class List extends React.Component {
     this.serverRequest.abort();
   }
 
+  handleFilterVal(val) {
+    const filteredList = this.state.lists.filter(list => {
+      return(
+        list.title.toLowerCase().indexOf(val) > -1
+      );
+    });
+    this.setState({
+      lists: filteredList
+    });
+  }
+
   render() {
     const posts = this.state.lists.map(list => {
       return(
@@ -39,9 +72,12 @@ export default class List extends React.Component {
     });
 
     return(
-      <ul>
-        {posts}
-      </ul>
+      <div>
+        <FilterPosts onFilterVal={this.handleFilterVal.bind(this)} />
+        <ul>
+          {posts}
+        </ul>
+      </div>
     );
   }
 }
