@@ -1,4 +1,7 @@
 .modal {
+  & [aria-hidden="true"] {
+    visibility: hidden;
+  }
   & button {
     cursor: pointer;
     border: none;
@@ -13,7 +16,7 @@
       opacity: .8;
     }
   }
-  &__wrap {
+  &__area {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,8 +48,9 @@
       margin: 4% auto 0;
     }
   }
-  &__bg {
+  &__overlay.on {
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
     right: 0;
