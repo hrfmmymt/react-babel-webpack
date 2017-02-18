@@ -39,7 +39,7 @@ export default class List extends React.Component {
       }))
       .end((err, res) => {
         if(err) {
-          console.log("err");
+          console.log(err.message);
         } else {
           const data = res.body.response.posts;
           this.setState({

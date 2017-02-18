@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import request from "superagent";
+import axios from "axios";
 
 export default class InfiniteList extends React.Component {
   constructor(props) {
@@ -12,42 +11,44 @@ export default class InfiniteList extends React.Component {
       hasMoreItems: true,
       nextHref: null
     };
+
+    this.loadItems = this.loadItems.bind(this);
   }
 
-  loadItems(page) {
+  loadItems() {
+    const self = this;
     const api = {
       baseUrl: "https://api.soundcloud.com",
       client_id: "caf73ef1e709f839664ab82bef40fa96"
     };
 
     let url = api.baseUrl + "/users/8665091/favorites";
-    if(this.state.nextHref) {
+    if (this.state.nextHref) {
       url = this.state.nextHref;
     }
 
-    request.get(url, {
-      client_id: api.client_id,
-      linked_partitioning: 1,
-      page_size: 10
-    }, {
-      cache: true
+    axios.get(url, {
+      params: {
+        client_id: api.client_id,
+        linked_partitioning: 1,
+        page_size: 10
+      }
     })
-    .end((err, res) => {
-      if(err) {
-        console.log("error");
-      } else {
-        const tracks = this.state.tracks;
-        res.body.collection.map(track => {
-          if(track.artwork_url == null) {
+    .then(res => {
+      if (res) {
+        const tracks = self.state.tracks;
+
+        res.data.collection.map(track => {
+          if (track.artwork_url === null) {
             track.artwork_url = track.user.avatar_url;
           }
-          tracks.push(track);
+          return tracks.push(track);
         });
 
-        if(res.body.next_href) {
+        if (res.data.next_href) {
           this.setState({
             tracks: tracks,
-            nextHref: res.body.next_href
+            nextHref: res.next_href
           });
         } else {
           this.setState({
@@ -55,6 +56,9 @@ export default class InfiniteList extends React.Component {
           });
         }
       }
+    })
+    .catch(err => {
+      console.error(err.message);
     });
   }
 
@@ -62,22 +66,23 @@ export default class InfiniteList extends React.Component {
     const items = [];
 
     this.state.tracks.map((track, i) => {
-      items.push(
-      <div className="tracks__item" key={i}>
-        <a href={track.permalink_url} target="_blank">
-          <img src={track.artwork_url} alt="artwork" />
-          <p className="title">{track.title}</p>
-        </a>
-      </div>
+      return items.push(
+        <div className="tracks__item" key={i}>
+          <a href={track.permalink_url} target="_blank" rel="noopener noreferrer">
+            <img src={track.artwork_url} alt="artwork" />
+            <p className="title">{track.title}</p>
+          </a>
+        </div>
       );
     });
 
     return (
       <InfiniteScroll
         pageStart={0}
-        loadMore={this.loadItems.bind(this)}
+        loadMore={this.loadItems}
         hasMore={this.state.hasMoreItems}
-        loader={<div className="loader">Loading ...</div>}>
+        loader={<div className="loader">Loading ...</div>}
+        >
 
         <div className="tracks">
           {items}
