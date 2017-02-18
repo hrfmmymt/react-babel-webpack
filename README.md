@@ -8,7 +8,7 @@
 - [x] Webpack
 - [x] React
 - [x] React Router
-- [x] SuperAgent
+- [x] SuperAgent, axios
 - [x] Babel
 - [x] PostCSS
 - [x] XO
