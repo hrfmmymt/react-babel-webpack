@@ -48,7 +48,7 @@ export default class InfiniteList extends React.Component {
         if (res.data.next_href) {
           this.setState({
             tracks: tracks,
-            nextHref: res.next_href
+            nextHref: res.data.next_href
           });
         } else {
           this.setState({
