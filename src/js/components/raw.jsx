@@ -7,7 +7,7 @@ export default class Raw extends React.Component {
       value1: "foo",
       value2: ["bar", "baz"]
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.onhandleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
@@ -19,9 +19,9 @@ export default class Raw extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-        <RawChild data={this.state.value1} handleClick={this.handleClick} />
+        <RawChild data={this.state.value1} handleClick={this.onhandleClick} />
       </div>
     );
   }
@@ -32,3 +32,7 @@ const RawChild = props => (
     {props.data}
   </div>
 );
+RawChild.propTypes = {
+  handleClick: React.PropTypes.func,
+  data: React.PropTypes.string
+};

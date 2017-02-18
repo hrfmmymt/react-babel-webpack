@@ -4,8 +4,7 @@ import jsonp from "superagent-jsonp";
 
 class FilterPosts extends React.Component {
   filterVal() {
-    const val = this.refs.myinput.value;
-    console.log(val);
+    const val = this.textInput.value;
     this.props.onFilterVal(val);
   }
 
@@ -14,14 +13,19 @@ class FilterPosts extends React.Component {
       <div>
         <input
           type="text"
-          ref="myinput"
+          ref={input => {
+            this.textInput = input;
+          }}
           onChange={this.filterVal.bind(this)}
           placeholder="sort"
-        />
+          />
       </div>
     );
   }
 }
+FilterPosts.propTypes = {
+  onFilterVal: React.PropTypes.func.isRequired
+};
 
 export default class List extends React.Component {
   constructor(props) {
@@ -35,10 +39,10 @@ export default class List extends React.Component {
     this.serverRequest =
       request.get("//api.tumblr.com/v2/blog/hrfmmymt/posts?api_key=UzvNmLeVFBpiFMakyac4wPlteUevfkSnQijUz4V8Kcuisvmip7&type=text")
       .use(jsonp({
-        timeout: 3000,
+        timeout: 3000
       }))
       .end((err, res) => {
-        if(err) {
+        if (err) {
           console.log(err.message);
         } else {
           const data = res.body.response.posts;
@@ -55,7 +59,7 @@ export default class List extends React.Component {
 
   handleFilterVal(val) {
     const filteredList = this.state.lists.filter(list => {
-      return(
+      return (
         list.title.toLowerCase().indexOf(val) > -1
       );
     });
@@ -66,12 +70,12 @@ export default class List extends React.Component {
 
   render() {
     const posts = this.state.lists.map(list => {
-      return(
+      return (
         <li key={list.post_url} data-tags={list.tags}><a href={list.post_url}>{list.title}</a></li>
       );
     });
 
-    return(
+    return (
       <div>
         <FilterPosts onFilterVal={this.handleFilterVal.bind(this)} />
         <ul>

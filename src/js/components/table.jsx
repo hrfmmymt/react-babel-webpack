@@ -14,10 +14,10 @@ export default class List extends React.Component {
     this.serverRequest =
       request.get("//api.tumblr.com/v2/blog/hrfmmymt/posts?api_key=UzvNmLeVFBpiFMakyac4wPlteUevfkSnQijUz4V8Kcuisvmip7&type=text")
       .use(jsonp({
-        timeout: 3000,
+        timeout: 3000
       }))
       .end((err, res) => {
-        if(err) {
+        if (err) {
           console.log(err.message);
         } else {
           const data = res.body.response.posts;
@@ -42,7 +42,7 @@ export default class List extends React.Component {
       d = (d < 10) ? "0" + d : d;
       const timestamp = d + "/" + m + "/" + y;
 
-      return(
+      return (
         <tr key={list.post_url} data-tags={list.tags} className="row">
           <td>{list.title}</td>
           <td><a href={list.short_url}>{list.short_url}</a></td>
@@ -53,7 +53,7 @@ export default class List extends React.Component {
       );
     });
 
-    return(
+    return (
       <table>
         <thead>
           <tr>
