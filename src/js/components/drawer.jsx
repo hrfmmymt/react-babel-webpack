@@ -14,7 +14,7 @@ class DrawerMenu extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.visible && this.props.visible) {
-      this.menu.focus();
+      this.menu.children.drowerTitle.focus();
     }
   }
 
@@ -96,7 +96,7 @@ export default class Drawer extends React.Component {
           visible={visible}
           onKeyDown={this.handleKeyDown}
           >
-          <h3>Drwer opened!</h3>
+          <h3 id="drowerTitle" tabIndex="0">Drwer opened!</h3>
           <Nav />
           <button
             type="button"
