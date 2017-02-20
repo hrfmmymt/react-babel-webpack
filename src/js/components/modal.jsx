@@ -12,7 +12,7 @@ class ModalWindow extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.visible && this.props.visible) {
-      this.dialog.focus();
+      this.dialog.children.dialogTitle.focus();
     }
   }
 
@@ -51,6 +51,11 @@ export default class Modal extends React.Component {
       visible: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  componentDidMount() {
+    document.body.addEventListener("keydown", this.handleKeyDown);
   }
 
   handleClick() {
@@ -59,15 +64,19 @@ export default class Modal extends React.Component {
     });
   }
 
+  handleKeyDown(event) {
+    if (event.keyCode === 27) {
+      this.setState({
+        visible: false
+      });
+    }
+  }
+
   render() {
     const {visible} = this.state;
 
     return (
-      <div className="modal__area">
-        <div
-          className={visible ? "modal__overlay on" : "modal__overlay off"}
-          onClick={this.handleClick}
-          />
+      <div className="modal__wrapper">
         <button
           type="button"
           onClick={this.handleClick}
@@ -76,17 +85,27 @@ export default class Modal extends React.Component {
           >
           open modal
         </button>
-        <ModalWindow id="dialog" visible={visible}>
-          <h3 id="dialogTitle">Modal opened!</h3>
-          <p id="dialogDesc">We have a modal window.</p>
-          <span>Stay tune in Tokyo friday night.</span>
-          <button
-            type="button"
+        <div className="modal__area">
+          <div
+            className={visible ? "modal__overlay on" : "modal__overlay off"}
             onClick={this.handleClick}
+            />
+          <ModalWindow
+            id="dialog"
+            visible={visible}
+            onKeyDown={this.handleKeyDown}
             >
-            Close
-          </button>
-        </ModalWindow>
+            <h3 id="dialogTitle" tabIndex="0">Modal opened!</h3>
+            <p id="dialogDesc">We have a modal window.</p>
+            <span>Stay tune in Tokyo friday night.</span>
+            <button
+              type="button"
+              onClick={this.handleClick}
+              >
+              Close
+            </button>
+          </ModalWindow>
+        </div>
       </div>
     );
   }
