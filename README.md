@@ -9,6 +9,7 @@
 - [x] React
 - [x] React Router
 - [x] SuperAgent
+- [x] Axios
 - [x] Babel
 - [x] PostCSS
 - [x] XO
