@@ -19,10 +19,10 @@ export default class InfiniteList extends React.Component {
     const self = this;
     const api = {
       baseUrl: "https://api.soundcloud.com",
-      client_id: "caf73ef1e709f839664ab82bef40fa96"
+      client_id: "5Ld8K1JIv2xnt1NJnWdYFCp9QUTqNZjI"
     };
 
-    let url = api.baseUrl + "/users/8665091/favorites";
+    let url = api.baseUrl + "/users/2708624/favorites";
     if (this.state.nextHref) {
       url = this.state.nextHref;
     }
